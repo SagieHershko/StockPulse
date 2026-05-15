@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Dark theme (default) ─────────────────────────────────── */
+:root {
+  --c-bg:      #0a0a0f;
+  --c-surface: #111118;
+  --c-surface2:#18181f;
+  --c-accent:  #00e5a0;
+  --c-accent2: #7c6fff;
+  --c-danger:  #ff4f6a;
+  --c-muted:   #6b6b80;
+  --c-border:  rgba(255,255,255,0.07);
+  --c-ink:     #f0f0f5;
+  --c-inksoft: #b0b0c0;
+}
+
+/* ── Light theme ──────────────────────────────────────────── */
+[data-theme="light"] {
+  --c-bg:      #f0f2f5;
+  --c-surface: #ffffff;
+  --c-surface2:#f4f6f9;
+  --c-accent:  #00a872;
+  --c-accent2: #5b4fff;
+  --c-danger:  #e53935;
+  --c-muted:   #64748b;
+  --c-border:  rgba(0,0,0,0.08);
+  --c-ink:     #0f172a;
+  --c-inksoft: #475569;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: 'DM Sans', 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.25s, color 0.25s;
+}
+
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--c-surface); }
+::-webkit-scrollbar-thumb { background: var(--c-surface2); border-radius: 3px; }
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5); cursor: pointer;
+}
+
+.tv-widget-container { width: 100%; height: 460px; }
+.tv-widget-container .tradingview-widget-container__widget { height: calc(100% - 32px); width: 100%; }
+
+/* table row hover */
+.screener-row:hover { background: var(--c-surface2); }

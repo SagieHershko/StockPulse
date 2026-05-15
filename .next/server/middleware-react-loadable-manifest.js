@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages\\\\index.js -> ../components/TradingViewChart\":{\"id\":\"pages\\\\index.js -> ../components/TradingViewChart\",\"files\":[\"static/chunks/components_TradingViewChart_js.js\"]}}"
