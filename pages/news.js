@@ -32,11 +32,11 @@ export default function NewsPage() {
   return (
     <>
       <Head><title>Market News — StockPulse</title></Head>
-      <div className="min-h-screen pb-10" style={{ background: 'var(--c-bg)' }}>
+      <div className="min-h-screen pb-24 md:pb-10" style={{ background: 'var(--c-bg)' }}>
         <div className="max-w-[1400px] mx-auto px-4 sm:px-8 pt-6">
 
           {/* Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
             <div>
               <h1 className="font-syne font-extrabold text-2xl" style={{ color: 'var(--c-ink)' }}>
                 Market News
@@ -66,7 +66,7 @@ export default function NewsPage() {
 
           {/* Grid */}
           {!loading && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {news.map((item, i) => (
                 <a key={i} href={item.url} target="_blank" rel="noopener noreferrer"
                   className="group flex flex-col rounded-2xl border overflow-hidden hover:-translate-y-0.5 transition-all duration-150"

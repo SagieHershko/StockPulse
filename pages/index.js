@@ -37,7 +37,7 @@ function MarketTimer() {
   useEffect(()=>{const t=()=>setInfo(getMarketInfo());t();const id=setInterval(t,1000);return()=>clearInterval(id);},[]);
   if(!info)return null;
   return(
-    <div className="flex items-center gap-3 rounded-2xl px-4 py-2.5 shrink-0 border" style={{background:'var(--c-surface)',borderColor:'var(--c-border)'}}>
+    <div className="flex items-center gap-2 rounded-xl px-3 py-2 shrink-0 border" style={{background:'var(--c-surface)',borderColor:'var(--c-border)'}}>
       <div className="flex items-center gap-2">
         <span className="relative flex h-2.5 w-2.5">
           {info.status==='OPEN'&&<span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-60" style={{background:info.dot}}/>}
@@ -66,7 +66,7 @@ function TickerBar({ tickers, active, onSelect, onAdd, onRemove }) {
     setVal('');setAdding(false);
   };
   return(
-    <div className="flex items-center gap-2 flex-wrap">
+    <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-hide" style={{flexWrap:'nowrap'}}>
       {tickers.map(t=>(
         <div key={t} onClick={()=>onSelect(t)}
           className="group relative flex items-center gap-1 px-3 py-1.5 rounded-xl border text-[11px] font-syne font-bold cursor-pointer select-none transition-all"
@@ -453,12 +453,12 @@ export default function Home() {
   return(
     <>
       <Head><title>{ticker?`${ticker} — StockPulse`:'StockPulse'}</title></Head>
-      <div className="min-h-screen pb-24" style={{background:'var(--c-bg)'}}>
+      <div className="min-h-screen pb-28 md:pb-24" style={{background:'var(--c-bg)'}}>
         <div className="max-w-[1500px] mx-auto px-4 sm:px-8 pt-5">
 
           {/* ── Search row ── */}
-          <div className="flex flex-wrap items-center gap-3 mb-3">
-            <div className="flex gap-1 p-1 rounded-xl shrink-0" style={{background:'var(--c-surface)'}}>
+          <div className="flex flex-col gap-2 mb-3">
+            <div className="flex gap-1 p-1 rounded-xl" style={{background:'var(--c-surface)'}}>
               {FILTER_TYPES.map(f=>(
                 <button key={f.value} onClick={()=>setFilter(f.value)}
                   className="px-3 py-1.5 rounded-xl text-xs font-syne font-bold transition-all"
@@ -467,7 +467,7 @@ export default function Home() {
                 </button>
               ))}
             </div>
-            <div className="flex items-center flex-1 gap-2 rounded-xl px-4 py-1 border transition-colors"
+            <div className="flex items-center gap-2 rounded-xl px-4 py-1 border transition-colors w-full"
               style={{background:'var(--c-surface)',borderColor:'var(--c-border)'}}>
               <span style={{color:'var(--c-muted)'}}>🔍</span>
               <input className="flex-1 bg-transparent outline-none py-2.5 font-syne font-bold uppercase tracking-widest text-sm placeholder:normal-case placeholder:font-normal placeholder:tracking-normal"
@@ -477,7 +477,9 @@ export default function Home() {
                 className="rounded-lg px-4 py-2 font-syne font-bold text-xs disabled:opacity-40"
                 style={{background:'var(--c-accent)',color:'#000'}}>{loading?'…':'Go'}</button>
             </div>
-            <MarketTimer/>
+            <div className="flex items-center justify-between gap-2">
+              <MarketTimer/>
+            </div>
           </div>
 
           {/* ── Ticker toolbar ── */}
@@ -517,11 +519,11 @@ export default function Home() {
                   <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none" style={{background:'radial-gradient(circle,rgba(0,229,160,0.05) 0%,transparent 70%)'}}/>
                   <div className="flex flex-wrap items-start justify-between gap-4">
                     <div>
-                      <div className="font-syne font-extrabold text-5xl sm:text-6xl tracking-tighter leading-none" style={{color:'var(--c-ink)'}}>{ticker}</div>
+                      <div className="font-syne font-extrabold text-4xl sm:text-5xl md:text-6xl tracking-tighter leading-none" style={{color:'var(--c-ink)'}}>{ticker}</div>
                       <div className="text-sm mt-2" style={{color:'var(--c-muted)'}}>{profile?.name||'—'}{profile?.exchange?` · ${profile.exchange}`:''}{profile?.finnhubIndustry?` · ${profile.finnhubIndustry}`:''}</div>
                     </div>
                     <div className="text-right">
-                      <div className="font-syne font-bold text-4xl sm:text-5xl tracking-tighter leading-none" style={{color:'var(--c-ink)'}}>${fmt(quote.c)}</div>
+                      <div className="font-syne font-bold text-3xl sm:text-4xl md:text-5xl tracking-tighter leading-none" style={{color:'var(--c-ink)'}}>${fmt(quote.c)}</div>
                       <div className="mt-2 text-base font-medium flex items-center justify-end gap-1.5" style={{color:ac}}>
                         {isUp?'▲':'▼'} {fPct(quote.dp)} <span className="text-sm">({isUp&&quote.d>0?'+':''}{fmt(quote.d)})</span>
                       </div>

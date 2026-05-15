@@ -45,7 +45,7 @@ export default function HeatmapPage() {
   return (
     <>
       <Head><title>Heatmap — StockPulse</title></Head>
-      <div className="min-h-screen pb-10" style={{ background: 'var(--c-bg)' }}>
+      <div className="min-h-screen pb-24 md:pb-10" style={{ background: 'var(--c-bg)' }}>
         <div className="max-w-[1500px] mx-auto px-4 sm:px-8 pt-6">
 
           <div className="flex flex-wrap items-center justify-between gap-4 mb-5">

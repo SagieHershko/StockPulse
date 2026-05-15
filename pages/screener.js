@@ -126,21 +126,21 @@ export default function ScreenerPage() {
   return (
     <>
       <Head><title>Screener — StockPulse</title></Head>
-      <div className="min-h-screen pb-10" style={{ background:'var(--c-bg)' }}>
+      <div className="min-h-screen pb-24 md:pb-10" style={{ background:'var(--c-bg)' }}>
         <div className="max-w-[1500px] mx-auto px-4 sm:px-8 pt-6">
 
           {/* Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5">
             <div>
               <h1 className="font-syne font-extrabold text-2xl" style={{ color:'var(--c-ink)' }}>Screener</h1>
               <p className="text-sm mt-1" style={{ color:'var(--c-muted)' }}>
                 Click <span style={{ color:'var(--c-accent)' }}>+</span> to add to your watchbar · Click ticker to open detail
               </p>
             </div>
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-col sm:flex-row gap-2 items-stretch sm:items-center">
               <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Filter…"
                 className="px-3 py-2 rounded-xl text-sm border outline-none"
-                style={{ background:'var(--c-surface)', borderColor:'var(--c-border)', color:'var(--c-ink)', width:200 }} />
+                style={{ background:'var(--c-surface)', borderColor:'var(--c-border)', color:'var(--c-ink)' }} className='w-full sm:w-48' />
               <div className="flex gap-1 p-1 rounded-xl" style={{ background:'var(--c-surface)' }}>
                 {Object.entries(CATEGORIES).map(([key,{label}]) => (
                   <button key={key} onClick={() => { setCat(key); router.push(`/screener?type=${key}`,undefined,{shallow:true}); }}

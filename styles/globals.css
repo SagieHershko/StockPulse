@@ -54,3 +54,19 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* table row hover */
 .screener-row:hover { background: var(--c-surface2); }
+
+/* Hide scrollbar for horizontal scroll elements */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Mobile safe areas */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .mobile-safe-bottom { padding-bottom: calc(4rem + env(safe-area-inset-bottom)); }
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 768px) {
+  button, a { min-height: 36px; }
+  .tv-widget-container { height: 320px; }
+  .tv-widget-container .tradingview-widget-container__widget { height: calc(100% - 32px); }
+}
