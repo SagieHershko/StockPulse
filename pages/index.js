@@ -450,7 +450,13 @@ export default function Home(){
 
   const doSearch=useCallback(async(sym)=>{
     const s=sym?sym.trim().toUpperCase():query.trim().toUpperCase();
-    if(!s){if(filter!=='all'){router.push(`/screener?type=${filter}`);return;}return;}
+    if(!s){
+      // Map filter to screener category
+      const typeMap = { stocks:'stocks', etf:'etf', indices:'indices' };
+      const dest = typeMap[filter];
+      if(dest){ router.push(`/screener?type=${dest}`); return; }
+      return;
+    }
     setTicker(s);setLoading(true);setError(null);
     setQuote(null);setProfile(null);setNews([]);setEarnings([]);setPtarget(null);setRecs([]);setTech(null);
     try{
